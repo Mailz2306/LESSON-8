@@ -393,8 +393,8 @@ Console.WriteLine();
 
 FillArrayRandom(secondArray);
 PrintArray2D(secondArray);
-
 Console.WriteLine();
+Console.WriteLine("Вот твоя матрица, кожаный мешок с костями");
 
 if (array.GetLength(0) != secondArray.GetLength(1))
 {
@@ -444,6 +444,7 @@ void PrintArray2D(int[,] array)
         
     }
 }
+
 _________________
 
 ЗАДАЧА 60:...Сформируйте трёхмерный массив из неповторяющихся двузначных чисел. Напишите программу, которая будет построчно выводить массив, добавляя индексы каждого элемента.
@@ -454,6 +455,7 @@ _________________
 26(1,0,1) 55(1,1,1)
 РЕШЕНИЕ
 ____________
+
 
 Console.Write("Введите длину X массива: ");
 int x = int.Parse(Console.ReadLine());
@@ -525,6 +527,8 @@ void PrintArray(int[,,] array3D)
     }
   }
 }
+
+
 ________________
 РЕШЕНО 
 _________________ 
@@ -540,7 +544,7 @@ _____________
 _____________
 */
 
-Console.Write("Введите длину первой строки и я создам спираль этой длины: ");
+Console.Write("Введите длину первой строки и я создам спираль этой длины, кожаный ублюдок: ");
 int lengthspiral = int.Parse(Console.ReadLine());
 
 int[,] table = new int[lengthspiral, lengthspiral];
