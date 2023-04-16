@@ -235,9 +235,9 @@ _______________________
 8 4 4 2
 РЕШЕНИЕ: 
 ___________________________
-Console.Write("Введите размерность m массива: ");
+Console.Write("Введите длину строк массива: ");
 int m = int.Parse(Console.ReadLine());
-Console.Write("Введите размерность n массива: ");
+Console.Write("Введите доину столбцов массива: ");
 int n = int.Parse(Console.ReadLine());
 
 int[,] randomArray = new int[m, n];
@@ -297,6 +297,78 @@ Console.WriteLine("В итоге получается вот такой масс
 PrintArray(randomArray);
 ____________________________ 
 
+Задайте прямоугольный двумерный массив. Напишите программу, которая будет находить 
+строку с наименьшей суммой элементов.
 
-*/
+Например, задан массив:
+1 4 7 2
+5 9 2 3
+8 4 2 4
+5 2 6 7
+Программа считает сумму элементов в каждой строке и выдаёт номер строки с наименьшей суммой элементов: 1 строка
+РЕШЕНИЕ
+______________ 
 
+Console.Write("Введите длину строк массива: ");
+int m = int.Parse(Console.ReadLine());
+Console.Write("Введите доину столбцов массива: ");
+int n = int.Parse(Console.ReadLine());
+
+int[,] randomArray = new int[m, n];
+
+void GenerateArray(int m, int n)
+{
+    int i, j;
+    Random rand = new Random();
+    for (i = 0; i < m; i++)
+    {
+        for (j = 0; j < n; j++)
+        {
+            randomArray[i, j] = rand.Next(1, 9);
+        }
+    }
+}
+
+void PrintArray(int[,] array)
+{
+    int i, j;
+    for (i = 0; i < array.GetLength(0); i++)
+    {
+        Console.WriteLine();
+        for (j = 0; j < array.GetLength(1); j++)
+        {
+            Console.Write($"{array[i, j]} ");
+        }
+    }
+}
+
+GenerateArray(m, n);
+Console.WriteLine("Вот твой массив, мешок с костями: ");
+PrintArray(randomArray);
+Console.WriteLine("\nЩас я тебе посчитаю, в какой из строк наименьшая сумма чисел... ");
+
+int SumLine(int[,] array, int i)
+{
+    int sum = array[i, 0];
+    for (int j = 1; j < array.GetLength(1); j++)
+    {
+        sum += array[i, j];
+    }
+    return sum;
+}
+
+int minSum = 1;
+int sum = SumLine(randomArray, 0);
+for (int i = 1; i < randomArray.GetLength(0); i++)
+{
+    if (sum > SumLine(randomArray, i))
+    {
+        sum = SumLine(randomArray, i);
+        minSum = i + 1;
+    }
+}
+Console.WriteLine($"В строке {minSum} сумма меньше остальных. \nНе за что, костяной мешок. Обращайся");
+______________________
+
+
+*/ 
